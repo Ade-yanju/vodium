@@ -7,22 +7,32 @@ import Reveal from "./reveal";
 
 const team = [
   {
-    name: "Founder & CEO",
+    role: "Founder & CEO",
     subtitle: "Former FinTech Lead",
     image: "/team/ceo.png",
-    namer: "Kalejaye Victor",
+    name: "Kalejaye Victor",
+    experience: "Business strategist / Developer at Rhea Fashion",
   },
   {
-    name: "CTO",
+    role: "CTO",
     subtitle: "Infrastructure Architect",
     image: "/team/cto.jpg",
-    namer: "Ogunyade Olamilekan",
+    name: "Ogunyade Olamilekan",
+    experience: "Software Engineer at Roware Limited",
   },
   {
-    name: "COO",
+    role: "COO",
     subtitle: "Credit Policy Expert",
     image: "/team/coo.jpg",
-    namer: "Akinsipe Demilade",
+    name: "Akinsipe Demilade",
+    experience: "Technical Support at PHDL",
+  },
+  {
+    role: "CSO",
+    subtitle: "Chief Strategy Officer",
+    image: "/team/cso.png",
+    name: "Oyewunmi Afeez",
+    experience: "Founder/CEO at Rhea Fashion and Naira40",
   },
 ];
 
@@ -30,20 +40,21 @@ export default function Team() {
   return (
     <section
       style={{
-        padding: "120px 0 140px",
+        padding: "clamp(80px, 12vw, 140px) 0",
         background:
           "radial-gradient(1200px 600px at 50% -10%, rgba(124,124,255,0.15), transparent 60%), linear-gradient(180deg, #05070f, #070b1a)",
       }}
     >
       <Container>
-        {/* Core belief */}
+        {/* Belief */}
         <Reveal>
           <div
             style={{
               maxWidth: 900,
               margin: "0 auto",
               textAlign: "center",
-              marginBottom: 96,
+              marginBottom: "clamp(56px, 10vw, 96px)",
+              paddingInline: 16,
             }}
           >
             <p
@@ -60,7 +71,7 @@ export default function Team() {
 
             <h2
               style={{
-                fontSize: "clamp(36px, 5vw, 56px)",
+                fontSize: "clamp(28px, 5vw, 56px)",
                 fontWeight: 600,
                 lineHeight: 1.1,
                 letterSpacing: "-0.02em",
@@ -77,80 +88,76 @@ export default function Team() {
         <Reveal>
           <div
             style={{
-              maxWidth: 820, // 👈 centers group as a unit
+              maxWidth: 900,
               margin: "0 auto",
               display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 64,
-              justifyItems: "center", // 👈 centers each column
-              alignItems: "start",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "clamp(40px, 8vw, 64px)",
+              justifyItems: "center",
             }}
           >
-            {team.map((member, i) => (
+            {team.map((m, i) => (
               <motion.div
-                key={member.name}
+                key={m.role}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
                 viewport={{ once: true }}
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center", // 👈 centers image + text
                   textAlign: "center",
+                  maxWidth: 240,
                 }}
               >
                 {/* Avatar */}
                 <div
                   style={{
-                    width: 112,
-                    height: 112,
+                    width: "clamp(88px, 18vw, 112px)",
+                    height: "clamp(88px, 18vw, 112px)",
                     borderRadius: "50%",
                     overflow: "hidden",
-                    marginBottom: 20,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    margin: "0 auto 20px",
                     boxShadow:
                       "0 0 0 3px rgba(124,124,255,0.25), 0 0 32px rgba(124,124,255,0.18)",
                   }}
                 >
                   <Image
-                    src={member.image}
-                    alt={member.name}
-                    width={160}
-                    height={120}
-                    style={{
-                      objectFit: "cover",
-                    }}
+                    src={m.image}
+                    alt={m.name}
+                    width={200}
+                    height={200}
+                    style={{ objectFit: "cover" }}
                   />
                 </div>
 
-                <p
-                  style={{
-                    fontSize: 14,
-                    fontWeight: 500,
-                    marginBottom: 6,
-                  }}
-                >
-                  {member.name}
-                </p>
+                <p style={{ fontSize: 14, fontWeight: 500 }}>{m.role}</p>
 
                 <p
                   style={{
                     fontSize: 13,
                     color: "rgba(255,255,255,0.6)",
+                    marginBottom: 6,
                   }}
                 >
-                  {member.subtitle}
+                  {m.subtitle}
                 </p>
+
                 <p
                   style={{
-                    fontSize: 15,
-                    color: "rgba(165, 24, 24, 0.6)",
+                    fontSize: 14,
+                    color: "#7c7cff",
+                    marginBottom: 4,
                   }}
                 >
-                  {member.namer}
+                  {m.name}
+                </p>
+
+                <p
+                  style={{
+                    fontSize: 13,
+                    color: "rgba(255,255,255,0.55)",
+                  }}
+                >
+                  {m.experience}
                 </p>
               </motion.div>
             ))}

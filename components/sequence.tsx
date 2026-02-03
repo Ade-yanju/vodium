@@ -2,13 +2,13 @@
 
 import Container from "./ui/container";
 import Reveal from "./reveal";
-import { Plane, Activity, CreditCard, Shield, TrendingUp } from "lucide-react";
+import { Plane, Activity, CreditCard, Shield } from "lucide-react";
 
 export default function Sequence() {
   return (
     <section
       style={{
-        padding: "96px 0",
+        padding: "clamp(64px, 10vw, 96px) 0",
         background:
           "linear-gradient(180deg, rgba(255,255,255,0.015), transparent)",
       }}
@@ -16,7 +16,12 @@ export default function Sequence() {
       <Container>
         {/* Header */}
         <Reveal>
-          <div style={{ maxWidth: 760, marginBottom: 56 }}>
+          <div
+            style={{
+              maxWidth: 760,
+              marginBottom: "clamp(40px, 8vw, 56px)",
+            }}
+          >
             <p
               style={{
                 fontSize: 12,
@@ -31,7 +36,7 @@ export default function Sequence() {
 
             <h2
               style={{
-                fontSize: 36,
+                fontSize: "clamp(26px, 5vw, 36px)",
                 fontWeight: 600,
                 lineHeight: 1.15,
                 marginBottom: 14,
@@ -43,7 +48,7 @@ export default function Sequence() {
 
             <p
               style={{
-                fontSize: 15,
+                fontSize: "clamp(14px, 3.5vw, 15px)",
                 color: "rgba(255,255,255,0.7)",
                 lineHeight: 1.6,
               }}
@@ -60,7 +65,7 @@ export default function Sequence() {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
             gap: 20,
-            marginBottom: 64,
+            marginBottom: "clamp(40px, 8vw, 64px)",
           }}
         >
           <SequenceCard
@@ -103,9 +108,9 @@ export default function Sequence() {
             style={{
               background: "rgba(255,255,255,0.04)",
               borderRadius: 20,
-              padding: 28,
+              padding: "clamp(20px, 5vw, 28px)",
               display: "grid",
-              gridTemplateColumns: "1.2fr 1fr",
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
               gap: 32,
               alignItems: "center",
             }}
@@ -114,7 +119,7 @@ export default function Sequence() {
             <div>
               <h3
                 style={{
-                  fontSize: 20,
+                  fontSize: "clamp(18px, 4vw, 20px)",
                   fontWeight: 500,
                   marginBottom: 12,
                 }}
@@ -124,14 +129,14 @@ export default function Sequence() {
 
               <p
                 style={{
-                  fontSize: 14,
+                  fontSize: "clamp(13px, 3.5vw, 14px)",
                   color: "rgba(255,255,255,0.65)",
                   lineHeight: 1.6,
                 }}
               >
                 By sequencing infrastructure before credit, Vodium avoids
                 structural default risk and builds underwriting precision from
-                real behavior not assumptions.
+                real behavior — not assumptions.
               </p>
             </div>
 
@@ -139,13 +144,13 @@ export default function Sequence() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
+                gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
                 gap: 16,
               }}
             >
               <Metric value="94%" label="Signal Accuracy" />
               <Metric value="15+" label="Institutional Partners" />
-              <Metric value="&lt;0.5%" label="Projected Defaults" />
+              <Metric value="<0.5%" label="Projected Defaults" />
             </div>
           </div>
         </Reveal>
@@ -229,7 +234,7 @@ function Metric({ value, label }: { value: string; label: string }) {
     <div>
       <p
         style={{
-          fontSize: 20,
+          fontSize: "clamp(18px, 4vw, 20px)",
           fontWeight: 600,
           color: "#22d3ee",
           marginBottom: 4,

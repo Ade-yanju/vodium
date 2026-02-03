@@ -15,7 +15,7 @@ export default function Strategy() {
   return (
     <section
       style={{
-        padding: "96px 0",
+        padding: "clamp(64px, 10vw, 96px) 0",
         background:
           "linear-gradient(180deg, rgba(255,255,255,0.02), transparent)",
       }}
@@ -23,7 +23,12 @@ export default function Strategy() {
       <Container>
         {/* Header */}
         <Reveal>
-          <div style={{ maxWidth: 720, marginBottom: 56 }}>
+          <div
+            style={{
+              maxWidth: 720,
+              marginBottom: "clamp(40px, 8vw, 56px)",
+            }}
+          >
             <p
               style={{
                 fontSize: 12,
@@ -38,7 +43,7 @@ export default function Strategy() {
 
             <h2
               style={{
-                fontSize: 36,
+                fontSize: "clamp(26px, 5vw, 36px)",
                 fontWeight: 600,
                 lineHeight: 1.15,
                 marginBottom: 16,
@@ -49,20 +54,14 @@ export default function Strategy() {
 
             <p
               style={{
-                fontSize: 15,
+                fontSize: "clamp(14px, 3.5vw, 15px)",
                 color: "rgba(255,255,255,0.7)",
                 lineHeight: 1.6,
-                marginBottom: 24,
               }}
             >
               Capturing high-signal data from Africa’s most predictable consumer
               segment to build durable credit infrastructure.
             </p>
-
-            {/* <div style={{ display: "flex", gap: 12 }}>
-              <ActionButton primary>Explore infrastructure</ActionButton>
-              <ActionButton>View strategy model</ActionButton>
-            </div> */}
           </div>
         </Reveal>
 
@@ -70,8 +69,9 @@ export default function Strategy() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1.2fr 1fr",
-            gap: 48,
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "clamp(32px, 6vw, 48px)",
+            alignItems: "start",
           }}
         >
           {/* Left column */}
@@ -79,7 +79,7 @@ export default function Strategy() {
             <div>
               <h3
                 style={{
-                  fontSize: 18,
+                  fontSize: "clamp(16px, 4vw, 18px)",
                   fontWeight: 500,
                   marginBottom: 20,
                 }}
@@ -88,7 +88,11 @@ export default function Strategy() {
               </h3>
 
               <div
-                style={{ display: "flex", flexDirection: "column", gap: 18 }}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 18,
+                }}
               >
                 <InfoRow
                   icon={<Shield size={18} />}
@@ -111,13 +115,13 @@ export default function Strategy() {
             </div>
           </Reveal>
 
-          {/* Right column (flow cards) */}
+          {/* Right column */}
           <Reveal>
             <div
               style={{
                 background: "rgba(255,255,255,0.04)",
                 borderRadius: 18,
-                padding: 24,
+                padding: "clamp(20px, 4vw, 24px)",
               }}
             >
               <FlowCard title="Premium Tier" active />
@@ -133,10 +137,14 @@ export default function Strategy() {
 
         {/* Strategic Advantage */}
         <Reveal>
-          <div style={{ marginTop: 72 }}>
+          <div
+            style={{
+              marginTop: "clamp(48px, 10vw, 72px)",
+            }}
+          >
             <h3
               style={{
-                fontSize: 18,
+                fontSize: "clamp(16px, 4vw, 18px)",
                 fontWeight: 500,
                 marginBottom: 24,
               }}
@@ -147,7 +155,7 @@ export default function Strategy() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
                 gap: 20,
               }}
             >
@@ -193,10 +201,24 @@ function InfoRow({
     <div style={{ display: "flex", gap: 14 }}>
       <div style={{ color: "#7c7cff" }}>{icon}</div>
       <div>
-        <h4 style={{ fontSize: 14, fontWeight: 500, marginBottom: 4 }}>
+        <h4
+          style={{
+            fontSize: 14,
+            fontWeight: 500,
+            marginBottom: 4,
+          }}
+        >
           {title}
         </h4>
-        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.65)" }}>{text}</p>
+        <p
+          style={{
+            fontSize: 13,
+            color: "rgba(255,255,255,0.65)",
+            lineHeight: 1.5,
+          }}
+        >
+          {text}
+        </p>
       </div>
     </div>
   );
@@ -214,6 +236,7 @@ function FlowCard({ title, active }: { title: string; active?: boolean }) {
         borderRadius: 12,
         fontSize: 13,
         fontWeight: 500,
+        textAlign: "center",
       }}
     >
       {title}
@@ -255,36 +278,25 @@ function AdvantageCard({
     >
       <div style={{ marginBottom: 10, color: "#7c7cff" }}>{icon}</div>
 
-      <h4 style={{ fontSize: 15, fontWeight: 500, marginBottom: 6 }}>
+      <h4
+        style={{
+          fontSize: 15,
+          fontWeight: 500,
+          marginBottom: 6,
+        }}
+      >
         {title}
       </h4>
 
-      <p style={{ fontSize: 13, color: "rgba(255,255,255,0.65)" }}>{text}</p>
+      <p
+        style={{
+          fontSize: 13,
+          color: "rgba(255,255,255,0.65)",
+          lineHeight: 1.5,
+        }}
+      >
+        {text}
+      </p>
     </div>
-  );
-}
-
-function ActionButton({
-  children,
-  primary,
-}: {
-  children: React.ReactNode;
-  primary?: boolean;
-}) {
-  return (
-    <button
-      style={{
-        padding: "10px 16px",
-        borderRadius: 10,
-        fontSize: 13,
-        fontWeight: 500,
-        border: "none",
-        cursor: "pointer",
-        background: primary ? "#7c7cff" : "rgba(255,255,255,0.08)",
-        color: primary ? "#000" : "#fff",
-      }}
-    >
-      {children}
-    </button>
   );
 }

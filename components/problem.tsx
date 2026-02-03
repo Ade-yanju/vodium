@@ -1,13 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  AlertTriangle,
-  TrendingDown,
-  Layers,
-  Timer,
-  CheckCircle2,
-} from "lucide-react";
+import { AlertTriangle, TrendingDown, Layers, Timer } from "lucide-react";
 import Container from "./ui/container";
 import Reveal from "./reveal";
 
@@ -15,7 +8,7 @@ export default function Problem() {
   return (
     <section
       style={{
-        padding: "96px 0",
+        padding: "clamp(64px, 10vw, 96px) 0",
         background:
           "linear-gradient(180deg, rgba(255,255,255,0.02), transparent)",
       }}
@@ -23,7 +16,7 @@ export default function Problem() {
       <Container>
         {/* Header */}
         <Reveal>
-          <div style={{ marginBottom: 48 }}>
+          <div style={{ marginBottom: "clamp(32px, 6vw, 48px)" }}>
             <p
               style={{
                 color: "#7c7cff",
@@ -38,7 +31,7 @@ export default function Problem() {
 
             <h2
               style={{
-                fontSize: 36,
+                fontSize: "clamp(26px, 5vw, 36px)",
                 fontWeight: 600,
                 lineHeight: 1.15,
               }}
@@ -54,17 +47,18 @@ export default function Problem() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1.2fr 1fr",
-            gap: 40,
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "clamp(24px, 5vw, 40px)",
+            alignItems: "start",
           }}
         >
-          {/* LEFT: Subprime cycle cards */}
+          {/* LEFT */}
           <Reveal>
             <div
               style={{
                 background: "rgba(255,255,255,0.04)",
                 borderRadius: 20,
-                padding: 24,
+                padding: "clamp(20px, 4vw, 24px)",
               }}
             >
               <p
@@ -84,7 +78,7 @@ export default function Problem() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
                   gap: 16,
                 }}
               >
@@ -115,12 +109,12 @@ export default function Problem() {
             </div>
           </Reveal>
 
-          {/* RIGHT: Explanation */}
+          {/* RIGHT */}
           <Reveal>
             <div>
               <h3
                 style={{
-                  fontSize: 22,
+                  fontSize: "clamp(18px, 4vw, 22px)",
                   fontWeight: 500,
                   marginBottom: 16,
                 }}
@@ -133,7 +127,8 @@ export default function Problem() {
                 style={{
                   color: "rgba(255,255,255,0.7)",
                   lineHeight: 1.6,
-                  marginBottom: 24,
+                  marginBottom: 20,
+                  fontSize: "clamp(14px, 3.5vw, 15px)",
                 }}
               >
                 While the world looks at Africa as a microfinance project, a
@@ -145,35 +140,23 @@ export default function Problem() {
                 style={{
                   color: "rgba(255,255,255,0.7)",
                   lineHeight: 1.6,
-                  marginBottom: 32,
+                  fontSize: "clamp(14px, 3.5vw, 15px)",
                 }}
               >
                 Existing systems optimize for frequency, not trust, producing
                 predictable defaults and stagnant infrastructure.
               </p>
-
-              <div
-                style={{
-                  display: "flex",
-                  gap: 12,
-                  flexWrap: "wrap",
-                }}
-              >
-                {/* <ActionButton primary>See the solution</ActionButton>
-
-                <ActionButton>Download deck</ActionButton> */}
-              </div>
             </div>
           </Reveal>
         </div>
 
-        {/* Bottom stats */}
+        {/* Stats */}
         <Reveal>
           <div
             style={{
-              marginTop: 64,
+              marginTop: "clamp(40px, 8vw, 64px)",
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
               gap: 16,
             }}
           >
@@ -198,7 +181,7 @@ export default function Problem() {
 }
 
 /* -----------------------------
-   Small Components
+   Components
 ------------------------------ */
 
 function ProblemCard({
@@ -218,14 +201,7 @@ function ProblemCard({
         padding: 16,
       }}
     >
-      <div
-        style={{
-          color: "#ff6b6b",
-          marginBottom: 8,
-        }}
-      >
-        {icon}
-      </div>
+      <div style={{ color: "#ff6b6b", marginBottom: 8 }}>{icon}</div>
 
       <h4
         style={{
@@ -278,30 +254,5 @@ function StatCard({ title, text }: { title: string; text: string }) {
         {text}
       </p>
     </div>
-  );
-}
-
-function ActionButton({
-  children,
-  primary,
-}: {
-  children: React.ReactNode;
-  primary?: boolean;
-}) {
-  return (
-    <button
-      style={{
-        padding: "10px 16px",
-        borderRadius: 10,
-        fontSize: 13,
-        fontWeight: 500,
-        border: "none",
-        cursor: "pointer",
-        background: primary ? "#7c7cff" : "rgba(255,255,255,0.08)",
-        color: primary ? "#000" : "#fff",
-      }}
-    >
-      {children}
-    </button>
   );
 }

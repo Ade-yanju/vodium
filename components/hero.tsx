@@ -16,13 +16,12 @@ export default function Hero({
   return (
     <section
       style={{
-        height: "100vh",
-        minHeight: 640,
+        minHeight: "clamp(560px, 100vh, 900px)",
         display: "flex",
         alignItems: "center",
         position: "relative",
         overflow: "hidden",
-        scrollSnapAlign: "start",
+        padding: "clamp(48px, 10vh, 96px) 0",
       }}
     >
       {/* Background gradient */}
@@ -42,29 +41,25 @@ export default function Hero({
       {/* Vision icons */}
       <VisionIcon
         Icon={Plane}
-        desktop={{ top: "16%", left: "10%" }}
-        mobile={{ top: "10%", left: "6%" }}
+        position={{ top: "14%", left: "8%" }}
         label="Travel & mobility"
       />
 
       <VisionIcon
         Icon={Globe}
-        desktop={{ bottom: "18%", left: "14%" }}
-        mobile={{ bottom: "14%", left: "8%" }}
+        position={{ bottom: "18%", left: "12%" }}
         label="Lifestyle signals"
       />
 
       <VisionIcon
         Icon={CreditCard}
-        desktop={{ bottom: "20%", right: "16%" }}
-        mobile={{ bottom: "16%", right: "10%" }}
+        position={{ bottom: "20%", right: "14%" }}
         label="Payment infrastructure"
       />
 
       <VisionIcon
         Icon={Banknote}
-        desktop={{ top: "20%", right: "12%" }}
-        mobile={{ top: "12%", right: "6%" }}
+        position={{ top: "18%", right: "10%" }}
         label="Economic value"
       />
 
@@ -78,11 +73,12 @@ export default function Hero({
               textAlign: "center",
               position: "relative",
               zIndex: 2,
+              paddingInline: 16, // mobile-safe
             }}
           >
             <h1
               style={{
-                fontSize: "clamp(42px, 6vw, 68px)",
+                fontSize: "clamp(34px, 6vw, 68px)",
                 fontWeight: 600,
                 lineHeight: 1.05,
                 letterSpacing: "-0.02em",
@@ -95,8 +91,8 @@ export default function Hero({
 
             <p
               style={{
-                marginTop: 28,
-                fontSize: 18,
+                marginTop: "clamp(16px, 4vw, 28px)",
+                fontSize: "clamp(15px, 3.5vw, 18px)",
                 lineHeight: 1.6,
                 color: "rgba(255,255,255,0.75)",
                 maxWidth: 640,
@@ -110,7 +106,7 @@ export default function Hero({
 
             <div
               style={{
-                marginTop: 40,
+                marginTop: "clamp(28px, 6vw, 40px)",
                 display: "flex",
                 justifyContent: "center",
                 gap: 14,
@@ -133,7 +129,7 @@ export default function Hero({
         transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
         style={{
           position: "absolute",
-          bottom: 24,
+          bottom: "clamp(16px, 4vh, 28px)",
           left: "50%",
           transform: "translateX(-50%)",
           fontSize: 12,
@@ -148,56 +144,43 @@ export default function Hero({
 }
 
 /* --------------------------------
-   Vision Icon Component
+   Vision Icon (Fluid & Responsive)
 ---------------------------------- */
 
 function VisionIcon({
   Icon,
-  desktop,
-  mobile,
+  position,
   label,
 }: {
   Icon: React.ElementType;
-  desktop: React.CSSProperties;
-  mobile: React.CSSProperties;
+  position: React.CSSProperties;
   label: string;
 }) {
   return (
-    <>
-      {/* Desktop */}
-      <motion.div
-        aria-hidden
-        animate={{ y: [0, -16, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          position: "absolute",
-          ...desktop,
-          opacity: 0.4,
-          filter: "drop-shadow(0 0 26px rgba(255,255,255,0.22))",
-          zIndex: 1,
-        }}
-        className="hidden sm:block"
-        title={label}
-      >
-        <Icon size={88} />
-      </motion.div>
-
-      {/* Mobile */}
-      <motion.div
-        aria-hidden
-        animate={{ y: [0, -12, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          position: "absolute",
-          ...mobile,
-          opacity: 0.35,
-          filter: "drop-shadow(0 0 18px rgba(255,255,255,0.18))",
-          zIndex: 1,
-        }}
-        className="block sm:hidden"
-      >
-        <Icon size={56} />
-      </motion.div>
-    </>
+    <motion.div
+      aria-hidden
+      title={label}
+      animate={{ y: [0, -14, 0] }}
+      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      style={{
+        position: "absolute",
+        ...position,
+        opacity: 0.4,
+        filter: "drop-shadow(0 0 24px rgba(255,255,255,0.2))",
+        zIndex: 1,
+      }}
+    >
+      <Icon size={clampIconSize()} />
+    </motion.div>
   );
+}
+
+/* --------------------------------
+   Helper
+---------------------------------- */
+
+function clampIconSize() {
+  return typeof window !== "undefined"
+    ? Math.min(Math.max(window.innerWidth / 10, 48), 88)
+    : 64;
 }

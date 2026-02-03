@@ -14,7 +14,7 @@ export default function Solution() {
   return (
     <section
       style={{
-        padding: "96px 0",
+        padding: "clamp(64px, 10vw, 96px) 0",
         background:
           "linear-gradient(180deg, rgba(255,255,255,0.02), transparent)",
       }}
@@ -22,7 +22,12 @@ export default function Solution() {
       <Container>
         {/* Header */}
         <Reveal>
-          <div style={{ maxWidth: 760, marginBottom: 56 }}>
+          <div
+            style={{
+              maxWidth: 760,
+              marginBottom: "clamp(40px, 8vw, 56px)",
+            }}
+          >
             <p
               style={{
                 fontSize: 12,
@@ -37,7 +42,7 @@ export default function Solution() {
 
             <h2
               style={{
-                fontSize: 36,
+                fontSize: "clamp(26px, 5vw, 36px)",
                 fontWeight: 600,
                 lineHeight: 1.15,
                 marginBottom: 14,
@@ -48,7 +53,7 @@ export default function Solution() {
 
             <p
               style={{
-                fontSize: 15,
+                fontSize: "clamp(14px, 3.5vw, 15px)",
                 color: "rgba(255,255,255,0.7)",
                 lineHeight: 1.6,
               }}
@@ -66,7 +71,7 @@ export default function Solution() {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
             gap: 20,
-            marginBottom: 64,
+            marginBottom: "clamp(40px, 8vw, 64px)",
           }}
         >
           <RoadmapCard
@@ -104,8 +109,8 @@ export default function Solution() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 48,
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "clamp(32px, 6vw, 48px)",
               alignItems: "center",
             }}
           >
@@ -113,7 +118,7 @@ export default function Solution() {
             <div>
               <h3
                 style={{
-                  fontSize: 20,
+                  fontSize: "clamp(18px, 4vw, 20px)",
                   fontWeight: 500,
                   marginBottom: 16,
                 }}
@@ -123,7 +128,7 @@ export default function Solution() {
 
               <p
                 style={{
-                  fontSize: 14,
+                  fontSize: "clamp(13px, 3.5vw, 14px)",
                   color: "rgba(255,255,255,0.65)",
                   lineHeight: 1.6,
                   marginBottom: 24,
@@ -134,24 +139,30 @@ export default function Solution() {
                 deployed.
               </p>
 
-              <div style={{ display: "flex", gap: 32 }}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+                  gap: 24,
+                }}
+              >
                 <Metric label="Lower Defaults" value="87%" />
                 <Metric label="Cleaner Data" value="$400k+" />
               </div>
             </div>
 
-            {/* Right (visual placeholder) */}
+            {/* Right visual */}
             <div
               style={{
                 background: "rgba(255,255,255,0.04)",
                 borderRadius: 18,
-                padding: 24,
+                padding: "clamp(20px, 4vw, 24px)",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
-              <BarChart3 size={72} color="#7c7cff" />
+              <BarChart3 size={64} style={{ color: "#7c7cff" }} />
             </div>
           </div>
         </Reveal>
@@ -242,7 +253,7 @@ function Metric({ label, value }: { label: string; value: string }) {
       </p>
       <p
         style={{
-          fontSize: 20,
+          fontSize: "clamp(18px, 4vw, 20px)",
           fontWeight: 600,
           color: "#7c7cff",
         }}
