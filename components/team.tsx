@@ -123,8 +123,8 @@ export default function Team() {
                   <Image
                     src={m.image}
                     alt={m.name}
-                    width={140}
-                    height={140}
+                    width={120}
+                    height={120}
                     style={{ objectFit: "cover" }}
                   />
                 </div>
