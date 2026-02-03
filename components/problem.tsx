@@ -116,7 +116,7 @@ export default function Problem() {
           </Reveal>
 
           {/* RIGHT: Explanation */}
-          <Reveal delay={0.1}>
+          <Reveal>
             <div>
               <h3
                 style={{

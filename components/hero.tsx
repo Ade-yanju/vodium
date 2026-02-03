@@ -157,7 +157,7 @@ function VisionIcon({
   mobile,
   label,
 }: {
-  Icon: any;
+  Icon: React.ElementType;
   desktop: React.CSSProperties;
   mobile: React.CSSProperties;
   label: string;

@@ -112,7 +112,7 @@ export default function Strategy() {
           </Reveal>
 
           {/* Right column (flow cards) */}
-          <Reveal delay={0.1}>
+          <Reveal>
             <div
               style={{
                 background: "rgba(255,255,255,0.04)",

@@ -122,7 +122,7 @@ export default function Footer({
    Subcomponent
 ---------------------------------- */
 
-function SocialIcon({ Icon, label }: { Icon: any; label: string }) {
+function SocialIcon({ Icon, label }: { Icon: React.ComponentType<{ size?: number }>; label: string }) {
   return (
     <motion.a
       href="#"
