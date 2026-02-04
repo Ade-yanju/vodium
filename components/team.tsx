@@ -23,7 +23,7 @@ const team = [
   {
     role: "COO",
     subtitle: "Credit Policy Expert",
-    image: "/team/coo.jpg",
+    image: "/team/coo.png",
     name: "Akinsipe Demilade",
     experience: "Technical Support at PHDL",
   },
